@@ -1,0 +1,13 @@
+{
+  "enabled": true,
+  "name": "Sync Diagrams List",
+  "description": "Manually trigger to scan public/ for SVG files and update README.md and index.html with the current list of diagrams.",
+  "version": "1",
+  "when": {
+    "type": "userTriggered"
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "Scan the public/ directory for all .svg files. Then:\\n1. Update README.md: regenerate the full list under the \\\"## Diagrams\\\" section. Each entry should be `- [Project Name](./public/filename.svg)` where the project name is derived from the filename (remove .svg extension, replace hyphens/underscores with spaces, title case it).\\n2. Update public/index.html: find the `const diagrams = [...]` array and regenerate it with all SVG files as `{ file: 'filename.svg', name: 'Project Name' }` entries where the name is derived from the filename (remove .svg, replace hyphens/underscores with spaces, title case)."
+  }
+}
