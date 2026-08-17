@@ -1,0 +1,16 @@
+{
+  "enabled": true,
+  "name": "Update README on SVG add",
+  "description": "When a new SVG file is created in the workspace, automatically updates the README.md to include a link to the new diagram.",
+  "version": "1",
+  "when": {
+    "type": "fileCreated",
+    "patterns": [
+      "*.svg"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "A new SVG file was just created. Update the README.md file to include a link to this new SVG in the \"## Diagrams\" section. List all .svg files in the workspace root directory and regenerate the full list of diagram links in the README. Each entry should be a markdown link in the format `- [filename.svg](./filename.svg)`."
+  }
+}
