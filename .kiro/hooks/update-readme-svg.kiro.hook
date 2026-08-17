@@ -1,16 +1,16 @@
 {
   "enabled": true,
   "name": "Update README on SVG add",
-  "description": "When a new SVG file is created in the workspace, automatically updates the README.md to include a link to the new diagram.",
+  "description": "When a new SVG file is created in the workspace, automatically updates the README.md and public/index.html to include the new diagram.",
   "version": "1",
   "when": {
     "type": "fileCreated",
     "patterns": [
-      "*.svg"
+      "public/*.svg"
     ]
   },
   "then": {
     "type": "askAgent",
-    "prompt": "A new SVG file was just created. Update the README.md file to include a link to this new SVG in the \"## Diagrams\" section. List all .svg files in the workspace root directory and regenerate the full list of diagram links in the README. Each entry should be a markdown link in the format `- [filename.svg](./filename.svg)`."
+    "prompt": "A new SVG file was just created in public/. Do the following:\n1. Update README.md: list all .svg files in the public/ directory and regenerate the full list under the \"## Diagrams\" section. Each entry should be `- [filename.svg](./public/filename.svg)`.\n2. Update public/index.html: find the `const diagrams = [...]` array and regenerate it to include all .svg filenames in the public/ directory (excluding index.html). Each entry should be a quoted string like 'filename.svg'."
   }
 }
