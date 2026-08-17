@@ -11,6 +11,6 @@
   },
   "then": {
     "type": "askAgent",
-    "prompt": "A new SVG file was just created in public/. Do the following:\n1. Update README.md: list all .svg files in the public/ directory and regenerate the full list under the \"## Diagrams\" section. Each entry should be `- [filename.svg](./public/filename.svg)`.\n2. Update public/index.html: find the `const diagrams = [...]` array and regenerate it to include all .svg filenames in the public/ directory (excluding index.html). Each entry should be a quoted string like 'filename.svg'."
+    "prompt": "A new SVG file was just created in public/. Do the following:\n1. Update README.md: list all .svg files in the public/ directory and regenerate the full list under the \"## Diagrams\" section. Each entry should be `- [Project Name](./public/filename.svg)` where the project name is derived from the filename (remove .svg extension, replace hyphens/underscores with spaces, title case it).\n2. Update public/index.html: find the `const diagrams = [...]` array and add a new entry as `{ file: 'filename.svg', name: 'Project Name' }` where the name is derived from the filename (remove .svg, replace hyphens/underscores with spaces, title case)."
   }
 }

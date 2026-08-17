@@ -147,7 +147,7 @@
 
   <script>
     const diagrams = [
-      'chat.svg'
+      { file: 'chat.svg', name: 'AI Chat Platform' }
     ];
 
     const list = document.getElementById('diagram-list');
@@ -156,7 +156,7 @@
     const modalTitle = document.getElementById('modal-title');
     const modalClose = document.getElementById('modal-close');
 
-    diagrams.forEach(name => {
+    diagrams.forEach(diagram => {
       const a = document.createElement('a');
       a.href = '#';
       a.className = 'diagram-link';
@@ -166,13 +166,13 @@
           <circle cx="8.5" cy="8.5" r="1.5"/>
           <polyline points="21 15 16 10 5 21"/>
         </svg>
-        ${name}
+        ${diagram.name}
       `;
       a.addEventListener('click', e => {
         e.preventDefault();
-        modalImg.src = '/' + name;
-        modalImg.alt = name;
-        modalTitle.textContent = name;
+        modalImg.src = '/' + diagram.file;
+        modalImg.alt = diagram.name;
+        modalTitle.textContent = diagram.name;
         modal.classList.add('active');
       });
       list.appendChild(a);
